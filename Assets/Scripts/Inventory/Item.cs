@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [System.Serializable]
@@ -14,9 +15,16 @@ public struct ItemData
 }
 public enum ItemType
 {
-    none,
-    none2,
-    none3
+    wood,
+    stone,
+    flowerRed,
+    flowerBlue,
+    MushroomRed,
+    MushroomYellow,
+    Herb,
+    magic,
+    sword,
+    axe
 }
 public interface IAction
 {
@@ -26,6 +34,12 @@ public class Item : MonoBehaviour
 {
 
     public ItemData m_data;
+    public SO_Item m_SO;
+    public ItemType type;
+    private void Awake()
+    {
+        m_data = m_SO.items.FirstOrDefault(i => i.m_type == type);
+    }
     public IAction m_action;
 
     public void TryAction()

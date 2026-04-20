@@ -16,18 +16,21 @@ public class HotBar : MonoBehaviour
     [Header("Effect")]
     [SerializeField] private RectTransform m_imgRect;
     [SerializeField] private float m_distance;
+    [SerializeField] private Slot m_slot;
 
     private bool m_isSelected = false;
     private static event Action<HotBar> requestTurnOf;
 
     private void Awake()
     {
-        if (m_imgRender == null || m_imgRender == null || m_unSelectSr == null || m_selectedSr == null)
+        if (m_imgRender == null || m_unSelectSr == null || m_selectedSr == null)
         {
             Debug.LogWarning("Missing Ref");
             return;
         }
-        if (m_hotBarBtn != null) m_hotBarBtn.onClick.AddListener(ToggleBar);
+
+        if (m_hotBarBtn != null)
+            m_hotBarBtn.onClick.AddListener(ToggleBar);
         m_imgRender.sprite = m_unSelectSr;
     }
     private void OnDisable()
@@ -39,32 +42,37 @@ public class HotBar : MonoBehaviour
     {
         requestTurnOf += TurnOff;
     }
-    private void ToggleBar()
+    public void ToggleBar()
     {
-        m_isSelected = !m_isSelected;
         if (m_isSelected)
-        {
-            m_imgRender.sprite = m_selectedSr;
-            Tween.UIAnchoredPosition(m_imgRect, new Vector2(0, m_distance), 0.1f, Ease.OutCirc);
-            requestTurnOf?.Invoke(this);
-        }
+            Deselect();
         else
-        {
-            m_imgRender.sprite = m_unSelectSr;
-            if (m_imgRect.anchoredPosition != Vector2.zero)
-            {
-                Tween.UIAnchoredPosition(m_imgRect, Vector2.zero, 0.1f, Ease.InCirc);
-            }
-        }
+            Select();
     }
     private void TurnOff(HotBar hotbar)
     {
         if (hotbar == this) return;
+
+        Deselect();
+    }
+    public void Select()
+    {
+        if (m_isSelected) return;
+
+        m_isSelected = true;
+        m_imgRender.sprite = m_selectedSr;
+
+        Tween.UIAnchoredPosition(m_imgRect, new Vector2(0, m_distance), 0.1f, Ease.OutCirc);
+        requestTurnOf?.Invoke(this);
+    }
+
+    public void Deselect()
+    {
+        if (!m_isSelected) return;
+
         m_isSelected = false;
         m_imgRender.sprite = m_unSelectSr;
-        if (m_imgRect.anchoredPosition != Vector2.zero)
-        {
-            Tween.UIAnchoredPosition(m_imgRect, Vector2.zero, 0.1f, Ease.InBack);
-        }
+
+        Tween.UIAnchoredPosition(m_imgRect, Vector2.zero, 0.1f, Ease.InCirc);
     }
 }

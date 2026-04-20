@@ -1,4 +1,4 @@
-﻿ using UnityEngine;
+﻿using UnityEngine;
 #if ENABLE_INPUT_SYSTEM 
 using UnityEngine.InputSystem;
 #endif
@@ -14,6 +14,7 @@ namespace StarterAssets
 #endif
     public class ThirdPersonController : MonoBehaviour
     {
+        public static ThirdPersonController Instance;
         [Header("Player")]
         [Tooltip("Move speed of the character in m/s")]
         public float MoveSpeed = 2.0f;
@@ -74,6 +75,7 @@ namespace StarterAssets
 
         [Tooltip("For locking the camera position on all axis")]
         public bool LockCameraPosition = false;
+        private bool _jumpConsumed;
 
         // cinemachine
         private float _cinemachineTargetYaw;
@@ -99,9 +101,9 @@ namespace StarterAssets
         private int _animIDMotionSpeed;
 
 #if ENABLE_INPUT_SYSTEM 
-        private PlayerInput _playerInput;
+        public PlayerInput _playerInput;
 #endif
-        private Animator _animator;
+        public Animator _animator;
         private CharacterController _controller;
         private StarterAssetsInputs _input;
         private GameObject _mainCamera;
@@ -130,12 +132,13 @@ namespace StarterAssets
             {
                 _mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
             }
+            Instance = this;
         }
 
         private void Start()
         {
             _cinemachineTargetYaw = CinemachineCameraTarget.transform.rotation.eulerAngles.y;
-            
+
             _hasAnimator = TryGetComponent(out _animator);
             _controller = GetComponent<CharacterController>();
             _input = GetComponent<StarterAssetsInputs>();
@@ -160,6 +163,7 @@ namespace StarterAssets
             GroundedCheck();
             Move();
         }
+      
 
         private void LateUpdate()
         {
@@ -192,23 +196,32 @@ namespace StarterAssets
 
         private void CameraRotation()
         {
-            // if there is an input and camera position is not fixed
+            // 1. Kiểm tra nếu có input và camera không bị khóa
             if (_input.look.sqrMagnitude >= _threshold && !LockCameraPosition)
             {
-                //Don't multiply mouse input by Time.deltaTime;
-                float deltaTimeMultiplier = IsCurrentDeviceMouse ? 1.0f : Time.deltaTime;
+                // QUAN TRỌNG: Nếu đang ở chế độ TouchMode, ta dùng multiplier là 1.0f 
+                // giống như chuột để không bị Time.deltaTime làm cho giá trị quá nhỏ.
+                float deltaTimeMultiplier = (IsCurrentDeviceMouse || _input.isTouchMode) ? 1.0f : Time.deltaTime;
 
                 _cinemachineTargetYaw += _input.look.x * deltaTimeMultiplier;
                 _cinemachineTargetPitch += _input.look.y * deltaTimeMultiplier;
             }
 
-            // clamp our rotations so our values are limited 360 degrees
+            // 2. Giới hạn góc xoay
             _cinemachineTargetYaw = ClampAngle(_cinemachineTargetYaw, float.MinValue, float.MaxValue);
             _cinemachineTargetPitch = ClampAngle(_cinemachineTargetPitch, BottomClamp, TopClamp);
 
-            // Cinemachine will follow this target
+            // 3. Áp dụng xoay cho Cinemachine Target
             CinemachineCameraTarget.transform.rotation = Quaternion.Euler(_cinemachineTargetPitch + CameraAngleOverride,
                 _cinemachineTargetYaw, 0.0f);
+
+            // 4. RESET INPUT (Đây là chìa khóa): 
+            // Sau khi đã tính toán xoay xong, nếu là TouchMode thì ta xóa giá trị look ngay lập tức.
+            // Việc này thay thế cho LateUpdate bên script Input để tránh lỗi thứ tự chạy script.
+            if (_input.isTouchMode)
+            {
+                _input.look = Vector2.zero;
+            }
         }
 
         private void Move()
@@ -283,36 +296,38 @@ namespace StarterAssets
         {
             if (Grounded)
             {
-                // reset the fall timeout timer
+                // Reset thời gian chờ rơi
                 _fallTimeoutDelta = FallTimeout;
 
-                // update animator if using character
+                // Cập nhật Animator
                 if (_hasAnimator)
                 {
                     _animator.SetBool(_animIDJump, false);
                     _animator.SetBool(_animIDFreeFall, false);
                 }
 
-                // stop our velocity dropping infinitely when grounded
+                // Chặn vận tốc rơi khi đang ở trên đất
                 if (_verticalVelocity < 0.0f)
                 {
                     _verticalVelocity = -2f;
                 }
 
-                // Jump
+                // LOGIC NHẢY: Chỉ cho phép nhảy nếu phím Jump được nhấn VÀ thời gian hồi đã hết
                 if (_input.jump && _jumpTimeoutDelta <= 0.0f)
                 {
-                    // the square root of H * -2 * G = how much velocity needed to reach desired height
+                    // Công thức tính lực nhảy
                     _verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
 
-                    // update animator if using character
                     if (_hasAnimator)
                     {
                         _animator.SetBool(_animIDJump, true);
                     }
+
+                    // QUAN TRỌNG: Reset cooldown nhảy ngay khi vừa nhảy xong
+                    _jumpTimeoutDelta = JumpTimeout;
                 }
 
-                // jump timeout
+                // Đếm ngược thời gian hồi nhảy khi đang ở trên đất
                 if (_jumpTimeoutDelta >= 0.0f)
                 {
                     _jumpTimeoutDelta -= Time.deltaTime;
@@ -320,31 +335,28 @@ namespace StarterAssets
             }
             else
             {
-                // reset the jump timeout timer
+                // Khi đang ở trên không, luôn ép thời gian hồi nhảy về giá trị mặc định
                 _jumpTimeoutDelta = JumpTimeout;
 
-                // fall timeout
+                // Nếu không ở trên đất, không cho phép nhận lệnh nhảy nữa (tránh nhảy 2 lần)
+                _input.jump = false;
+
                 if (_fallTimeoutDelta >= 0.0f)
                 {
                     _fallTimeoutDelta -= Time.deltaTime;
                 }
                 else
                 {
-                    // update animator if using character
-                    if (_hasAnimator)
-                    {
-                        _animator.SetBool(_animIDFreeFall, true);
-                    }
+                    if (_hasAnimator) _animator.SetBool(_animIDFreeFall, true);
                 }
-
-                // if we are not grounded, do not jump
-                _input.jump = false;
             }
 
-            // apply gravity over time if under terminal (multiply by delta time twice to linearly speed up over time)
+            // Áp dụng trọng lực
             if (_verticalVelocity < _terminalVelocity)
             {
-                _verticalVelocity += Gravity * Time.deltaTime;
+                // Nếu đang rơi (vận tốc âm), có thể nhân thêm hệ số để rơi nhanh hơn cho cảm giác "nặng"
+                float gravityMultiplier = (_verticalVelocity < 0) ? 2.2f : 1f;
+                _verticalVelocity += Gravity * gravityMultiplier * Time.deltaTime;
             }
         }
 

@@ -9,10 +9,10 @@ public class BasePopup : MonoBehaviour
     [SerializeField] protected Button btnClose;
 
     public bool isShow;
-    
+
     protected virtual void Awake()
     {
-        if(btnClose != null) btnClose.onClick.AddListener(Hide);
+        if (btnClose != null) btnClose.onClick.AddListener(Hide);
     }
 
     public virtual void Show()
@@ -38,8 +38,18 @@ public class BasePopup : MonoBehaviour
 
     protected virtual void OnDisable()
     {
-	    Tween.StopAll(btnClose.transform);
-	    Tween.StopAll(main);
+        if (btnClose != null)
+            Tween.StopAll(btnClose.transform);
+        Tween.StopAll(main);
     }
-    
+    public virtual void Toggle()
+    {
+        isShow = !isShow;
+        if (isShow)
+        {
+            Show();
+        }
+        else Hide();
+    }
+
 }

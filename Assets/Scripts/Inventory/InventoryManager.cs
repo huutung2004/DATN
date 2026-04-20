@@ -52,27 +52,35 @@ public class InventoryManager : MonoBehaviour
     {
         if (newItem == null) return;
 
-   
-        foreach (var slot in m_allSlots)
+        foreach (var slot in m_slotsHotbar)
         {
             if (slot.m_currentItem != null &&
-                slot.m_currentItem.m_data.m_nameOfItem ==
-                newItem.m_data.m_nameOfItem)
+                slot.m_currentItem.m_data.m_nameOfItem == newItem.m_data.m_nameOfItem)
             {
                 slot.m_currentItem.m_data.m_count += newItem.m_data.m_count;
                 slot.UpdateCount();
-                Destroy(newItem);
+                Destroy(newItem.gameObject); 
                 return;
             }
         }
-
 
         foreach (var slot in m_slotsHotbar)
         {
             if (slot.m_currentItem == null)
             {
                 slot.SetItem(newItem);
+                return;
+            }
+        }
 
+        foreach (var slot in m_slotsInventory)
+        {
+            if (slot.m_currentItem != null &&
+                slot.m_currentItem.m_data.m_nameOfItem == newItem.m_data.m_nameOfItem)
+            {
+                slot.m_currentItem.m_data.m_count += newItem.m_data.m_count;
+                slot.UpdateCount();
+                Destroy(newItem.gameObject);
                 return;
             }
         }
@@ -82,10 +90,10 @@ public class InventoryManager : MonoBehaviour
             if (slot.m_currentItem == null)
             {
                 slot.SetItem(newItem);
-
                 return;
             }
         }
+
         Debug.Log("Inventory Full");
     }
 }

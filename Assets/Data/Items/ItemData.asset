@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ca2c1c8c8ca50f44bdb2a71a7b457c8, type: 3}
+  m_Name: ItemData
+  m_EditorClassIdentifier: 
+  items:
+  - m_nameOfItem: Wood
+    m_spriteRender: {fileID: 21300000, guid: 83bed27b4f3bbac4484bc3eb2c73cc67, type: 3}
+    m_count: 1
+    m_type: 0
+    m_inHotbar: 0
+  - m_nameOfItem: Stone
+    m_spriteRender: {fileID: 21300000, guid: c293cdc1142aefc4e92be10187e24923, type: 3}
+    m_count: 1
+    m_type: 1
+    m_inHotbar: 0
+  - m_nameOfItem: Flower Red
+    m_spriteRender: {fileID: 21300000, guid: f7c62065dcd070445ad3d40541952e28, type: 3}
+    m_count: 1
+    m_type: 2
+    m_inHotbar: 0
+  - m_nameOfItem: Flower Blue
+    m_spriteRender: {fileID: 21300000, guid: 64f50122b23ac074eae450228b75f135, type: 3}
+    m_count: 1
+    m_type: 3
+    m_inHotbar: 0
+  - m_nameOfItem: Mushroom Red
+    m_spriteRender: {fileID: 21300000, guid: 3ca15f7cabc8cbe44af326d6faa6c970, type: 3}
+    m_count: 1
+    m_type: 4
+    m_inHotbar: 0
+  - m_nameOfItem: Mushroom Yellow
+    m_spriteRender: {fileID: 21300000, guid: c2134ebb7d5f7534a9e05890af582514, type: 3}
+    m_count: 1
+    m_type: 5
+    m_inHotbar: 0
+  - m_nameOfItem: Herb
+    m_spriteRender: {fileID: 21300000, guid: c29c343b56c70cc42b7a1aab8b2f56f8, type: 3}
+    m_count: 1
+    m_type: 6
+    m_inHotbar: 0
+  - m_nameOfItem: Sword
+    m_spriteRender: {fileID: 21300000, guid: dfa831d309c4ce343be26212209b2d07, type: 3}
+    m_count: 1
+    m_type: 8
+    m_inHotbar: 0
+  - m_nameOfItem: Axe
+    m_spriteRender: {fileID: 21300000, guid: 52603aaf49dd0cf47be3b0edae89377e, type: 3}
+    m_count: 1
+    m_type: 9
+    m_inHotbar: 0
+  - m_nameOfItem: Magic
+    m_spriteRender: {fileID: 21300000, guid: 9e521b84d5b791945918fdca3e62aac4, type: 3}
+    m_count: 1
+    m_type: 7
+    m_inHotbar: 0

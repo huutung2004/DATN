@@ -19,6 +19,8 @@ namespace StarterAssets
 		[Header("Mouse Cursor Settings")]
 		public bool cursorLocked = true;
 		public bool cursorInputForLook = true;
+		[Header("Custom Toggle Mode")]
+		public bool isTouchMode = false;
 
 #if ENABLE_INPUT_SYSTEM
 		public void OnMove(InputValue value)
@@ -28,7 +30,7 @@ namespace StarterAssets
 
 		public void OnLook(InputValue value)
 		{
-			if(cursorInputForLook)
+			if (cursorInputForLook && !isTouchMode)
 			{
 				LookInput(value.Get<Vector2>());
 			}
@@ -49,7 +51,7 @@ namespace StarterAssets
 		public void MoveInput(Vector2 newMoveDirection)
 		{
 			move = newMoveDirection;
-		} 
+		}
 
 		public void LookInput(Vector2 newLookDirection)
 		{
@@ -74,7 +76,23 @@ namespace StarterAssets
 		private void SetCursorState(bool newState)
 		{
 			Cursor.lockState = newState ? CursorLockMode.Locked : CursorLockMode.None;
+			Cursor.visible = !newState;
+		}
+		private void Update()
+		{
+			if (Input.GetKeyDown(KeyCode.LeftControl))
+			{
+				ToggleControlMode();
+			}
+		}
+		private void ToggleControlMode()
+		{
+			isTouchMode = !isTouchMode;
+
+			cursorLocked = !isTouchMode;
+			SetCursorState(cursorLocked);
+			look = Vector2.zero;
 		}
 	}
-	
+
 }
