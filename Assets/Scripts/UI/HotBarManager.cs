@@ -5,6 +5,7 @@ public class HotBarManager : MonoBehaviour
 {
     [SerializeField] private List<HotBar> m_listHotbar;
     private int currentIndex = -1;
+
     private void Update()
     {
         for (int i = 0; i < m_listHotbar.Count && i < 6; i++)
@@ -16,14 +17,35 @@ public class HotBarManager : MonoBehaviour
         }
     }
 
-    private void SelectHotbar(int index)
+    public void SelectHotbar(int index)
     {
         if (index < 0 || index >= m_listHotbar.Count) return;
-        if (currentIndex != -1 && currentIndex != index)
+
+        if (currentIndex == index)
+        {
+            m_listHotbar[currentIndex].Deselect();
+            PlayerEquippedItem.Instance.UnEquipItem();
+            currentIndex = -1;
+            return;
+        }
+
+        if (currentIndex != -1)
         {
             m_listHotbar[currentIndex].Deselect();
         }
+
         currentIndex = index;
-        m_listHotbar[index].Select();
+        m_listHotbar[currentIndex].Select();
+
+        Item item = m_listHotbar[currentIndex].GetItemInSlot();
+        // Debug.Log(item, item.m_data.m_obj);
+        if (item != null && item.m_data.m_obj != null)
+        {
+            PlayerEquippedItem.Instance.EquipItem(item.m_data.m_obj);
+        }
+        else
+        {
+            PlayerEquippedItem.Instance.UnEquipItem();
+        }
     }
 }

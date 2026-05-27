@@ -68,14 +68,22 @@ public class PlayerInteraction : MonoBehaviour
         Vector3 mousePos = Input.mousePosition;
 
         if (float.IsInfinity(mousePos.x) || float.IsNaN(mousePos.x) ||
-            mousePos.x < 0 || mousePos.y < 0 || mousePos.x > Screen.width || mousePos.y > Screen.height)
+            mousePos.x < 0 || mousePos.y < 0 ||
+            mousePos.x > Screen.width || mousePos.y > Screen.height)
             return;
 
         try
         {
             Ray ray = cam.ScreenPointToRay(mousePos);
+
             Gizmos.color = Color.green;
             Gizmos.DrawRay(ray.origin, ray.direction * m_interactDistance);
+
+            Vector3 endPoint = ray.origin + ray.direction * m_interactDistance;
+
+            float radius = 0.5f;
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawWireSphere(endPoint, radius);
         }
         catch { }
     }

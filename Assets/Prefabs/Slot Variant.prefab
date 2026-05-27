@@ -10,8 +10,29 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2291147298695768190, guid: 07327abe62db1ba4b8fc6d103a60f574,
         type: 3}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2291147298695768190, guid: 07327abe62db1ba4b8fc6d103a60f574,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1093920232, guid: e0f98e6f701efc24e8b0ed731df5763f,
+        type: 3}
+    - target: {fileID: 2291147298695768190, guid: 07327abe62db1ba4b8fc6d103a60f574,
+        type: 3}
       propertyPath: m_RaycastTarget
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2291147298695768190, guid: 07327abe62db1ba4b8fc6d103a60f574,
+        type: 3}
+      propertyPath: m_PixelsPerUnitMultiplier
+      value: 5.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 7194333692542879837, guid: 07327abe62db1ba4b8fc6d103a60f574,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -2.9
       objectReference: {fileID: 0}
     - target: {fileID: 7253349673990886463, guid: 07327abe62db1ba4b8fc6d103a60f574,
         type: 3}

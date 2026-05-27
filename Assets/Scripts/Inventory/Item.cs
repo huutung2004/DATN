@@ -11,6 +11,8 @@ public struct ItemData
     public int m_count;
     public ItemType m_type;
     public bool m_inHotbar;
+    public bool m_canAttack;
+    public BaseObj m_obj;
 
 }
 public enum ItemType

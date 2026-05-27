@@ -111,7 +111,7 @@ namespace StarterAssets
         private const float _threshold = 0.01f;
 
         private bool _hasAnimator;
-
+        
         private bool IsCurrentDeviceMouse
         {
             get
@@ -157,13 +157,11 @@ namespace StarterAssets
 
         private void Update()
         {
-            _hasAnimator = TryGetComponent(out _animator);
-
-            JumpAndGravity();
-            GroundedCheck();
-            Move();
+            // JumpAndGravity();
+            // GroundedCheck();
+            // Move();
         }
-      
+
 
         private void LateUpdate()
         {
@@ -352,7 +350,7 @@ namespace StarterAssets
             }
 
             // Áp dụng trọng lực
-            if (_verticalVelocity < _terminalVelocity)
+            if (_verticalVelocity > -_terminalVelocity)
             {
                 // Nếu đang rơi (vận tốc âm), có thể nhân thêm hệ số để rơi nhanh hơn cho cảm giác "nặng"
                 float gravityMultiplier = (_verticalVelocity < 0) ? 2.2f : 1f;
@@ -399,6 +397,13 @@ namespace StarterAssets
             {
                 AudioSource.PlayClipAtPoint(LandingAudioClip, transform.TransformPoint(_controller.center), FootstepAudioVolume);
             }
+        }
+        public void HandleMove() => Move();
+        public void HandleGravity() => JumpAndGravity();
+        public void HandleGroundedCheck() => GroundedCheck();
+        public bool GetAttackInput()
+        {
+            return false;
         }
     }
 }

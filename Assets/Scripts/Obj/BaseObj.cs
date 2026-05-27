@@ -12,9 +12,13 @@ public class BaseObj : MonoBehaviour, IInteractable
     public virtual string GetPromt() => "Interact";
     public string m_nameOfObj;
     public Item item;
+    public bool m_inInventory = false;
+    public GameObject m_particalLoot;
+
     protected virtual void Start()
     {
         if (m_outline != null) m_outline.enabled = false;
+        IdleObj();
     }
     public virtual void Interact()
     {
@@ -34,7 +38,7 @@ public class BaseObj : MonoBehaviour, IInteractable
     }
     protected virtual void TryTakeItem()
     {
-        if (item)
+        if (item && !m_inInventory)
         {
             Debug.Log($"take obj: {gameObject.name}");
             InventoryManager.Instance.AddItem(item);
@@ -45,6 +49,7 @@ public class BaseObj : MonoBehaviour, IInteractable
     }
     public virtual void Holding()
     {
+        if (m_inInventory) return;
         if (m_outline)
             m_outline.enabled = true;
         m_canInteract = true;
@@ -58,6 +63,7 @@ public class BaseObj : MonoBehaviour, IInteractable
     }
     public virtual void UnHolding()
     {
+        if (m_inInventory) return;
         if (m_outline)
             m_outline.enabled = false;
         m_canInteract = false;
@@ -69,6 +75,19 @@ public class BaseObj : MonoBehaviour, IInteractable
     {
         if (ParticalManager.Instance)
             ParticalManager.Instance.PlaySomke(gameObject.transform.position);
+    }
+    protected virtual void IdleObj()
+    {
+        if (m_inInventory)
+        {
+            if (m_particalLoot) m_particalLoot.SetActive(false);
+            return;
+        }
+    }
+    public virtual void TurnOffOutline()
+    {
+        if (m_outline)
+            m_outline.enabled = false;
     }
 
 }

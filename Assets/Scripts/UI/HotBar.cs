@@ -19,6 +19,7 @@ public class HotBar : MonoBehaviour
     [SerializeField] private Slot m_slot;
 
     private bool m_isSelected = false;
+    public Item GetItemInSlot() => m_slot.GetItem();
     private static event Action<HotBar> requestTurnOf;
 
     private void Awake()
