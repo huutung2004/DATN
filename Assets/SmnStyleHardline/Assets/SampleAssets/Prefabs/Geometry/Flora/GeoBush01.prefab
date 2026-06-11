@@ -68,10 +68,25 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: 2cd477261c32090479becbd56b84c6c4, type: 2}
+    - target: {fileID: -2809516671066355474, guid: ffecb6f872d4e6b4ab6f26b3f05da10a,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: -1852352621399476098, guid: ffecb6f872d4e6b4ab6f26b3f05da10a,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: ffecb6f872d4e6b4ab6f26b3f05da10a,
         type: 3}
       propertyPath: m_Name
       value: GeoBush01
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ffecb6f872d4e6b4ab6f26b3f05da10a,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4301855071937824280, guid: ffecb6f872d4e6b4ab6f26b3f05da10a,
         type: 3}
@@ -91,6 +106,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 7799254926222551646}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ffecb6f872d4e6b4ab6f26b3f05da10a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8409063249522848427}
     - targetCorrespondingSourceObject: {fileID: -2809516671066355474, guid: ffecb6f872d4e6b4ab6f26b3f05da10a,
         type: 3}
       insertIndex: -1
@@ -166,9 +185,34 @@ MonoBehaviour:
   m_outline: {fileID: 4134013352457717100}
   m_canInteract: 0
   m_nameOfObj: Tree
+  _icon: {fileID: 0}
   item: {fileID: 0}
   m_inInventory: 0
   m_particalLoot: {fileID: 0}
   m_iconRequired: {fileID: 21300000, guid: 52603aaf49dd0cf47be3b0edae89377e, type: 3}
   m_maxHp: 5
   m_currentHp: 0
+  amount: 2
+--- !u!114 &8409063249522848427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7760362921384844605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b455d433ed1a0874eb62ee1c365cd58c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_data:
+    m_nameOfItem: 
+    m_spriteRender: {fileID: 0}
+    m_count: 1
+    m_type: 0
+    m_inHotbar: 0
+    m_canAttack: 0
+    m_canEquid: 0
+    m_obj: {fileID: 0}
+  m_SO: {fileID: 11400000, guid: a1b7bad03352dad48a3faa321c33c97c, type: 2}
+  type: 0

@@ -9,7 +9,8 @@ public class DameDealer : MonoBehaviour
 
     [SerializeField] private float _weaponLenght;
     [SerializeField] private float _weaponDamage;
-
+    [SerializeField] private ITakeDamage _objTakeDamage;
+    [SerializeField] private LayerMask layer;
     void Start()
     {
         canDealDamage = false;
@@ -21,11 +22,13 @@ public class DameDealer : MonoBehaviour
         if (canDealDamage)
         {
             RaycastHit hit;
-            int  layerMask = 1<<9;
-            if(Physics.Raycast(transform.position,-transform.up,out hit , _weaponLenght, layerMask))
+            // int  layerMask = 1<<9;
+            if(Physics.Raycast(transform.position,-transform.up,out hit , _weaponLenght, layer))
             {
                 if (!hasDealtDamage.Contains(hit.transform.gameObject))
                 {
+                    _objTakeDamage = hit.transform.gameObject.GetComponentInParent<ITakeDamage>();
+                    _objTakeDamage?.TakeDamage(_weaponDamage);
                     Debug.Log("damage");
                     hasDealtDamage.Add(hit.transform.gameObject);
                 }

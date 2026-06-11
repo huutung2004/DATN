@@ -11,6 +11,7 @@ public class BaseObj : MonoBehaviour, IInteractable
 
     public virtual string GetPromt() => "Interact";
     public string m_nameOfObj;
+    public Sprite _icon;
     public Item item;
     public bool m_inInventory = false;
     public GameObject m_particalLoot;
@@ -53,11 +54,18 @@ public class BaseObj : MonoBehaviour, IInteractable
         if (m_outline)
             m_outline.enabled = true;
         m_canInteract = true;
+        ShowHoldingPopup();
+    }
+    public virtual void ShowHoldingPopup()
+    {
         if (HoldingPopup.Instance)
         {
-            if (item)
+            if (item != null)
+            {
                 HoldingPopup.Instance.FillData(item.m_data.m_nameOfItem, null, GetPromt());
-            else HoldingPopup.Instance.FillData(m_nameOfObj, null, GetPromt());
+            }
+            else
+                HoldingPopup.Instance.FillData(m_nameOfObj, _icon, GetPromt());
             HoldingPopup.Instance.Show();
         }
     }

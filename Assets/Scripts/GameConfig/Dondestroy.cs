@@ -12,6 +12,8 @@ public class Dondestroy : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        Application.targetFrameRate = 60;
+        Debug.Log("Run with 60 FPS");
         Instance = this;
         DontDestroyOnLoad(gameObject);
     }

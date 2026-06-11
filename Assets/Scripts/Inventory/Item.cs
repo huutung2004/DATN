@@ -12,6 +12,7 @@ public struct ItemData
     public ItemType m_type;
     public bool m_inHotbar;
     public bool m_canAttack;
+    public bool m_canEquid;
     public BaseObj m_obj;
 
 }
@@ -48,5 +49,5 @@ public class Item : MonoBehaviour
     {
         m_action?.Action();
     }
-    
+
 }

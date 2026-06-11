@@ -8,7 +8,8 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: GeoBark01
-  m_Shader: {fileID: -6465566751694194690, guid: 3fa4595d71b345d4792fcd23629caf6c, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 3fa4595d71b345d4792fcd23629caf6c,
+    type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -84,6 +85,8 @@ Material:
     m_Floats:
     - _AccentMap_Add: 2
     - _AccentMap_Strength: 0.35
+    - _AccentMask_Add: 1
+    - _AccentMask_Strength: 1
     - _AddPrecomputedVelocity: 0
     - _AlphaClip: 0
     - _AlphaToMask: 0
@@ -99,6 +102,8 @@ Material:
     - _DstBlend: 0
     - _DstBlendAlpha: 0
     - _EnvironmentReflections: 1
+    - _Environment_Light_Influence: 1
+    - _Environment_Shadow_Influence: 1
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
@@ -120,13 +125,12 @@ Material:
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Color_Accent: {r: 0.7921569, g: 0.52564436, b: 0.4509804, a: 1}
+    - _Color_Accent: {r: 0.4716981, g: 0.31935525, b: 0.27678886, a: 1}
     - _Color_Base: {r: 0.6698113, g: 0.46724066, b: 0.33806515, a: 1}
     - _Color_Shadow: {r: 0, g: 0, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
-  m_AllowLocking: 1
 --- !u!114 &8050879589567170879
 MonoBehaviour:
   m_ObjectHideFlags: 11

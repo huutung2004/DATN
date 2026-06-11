@@ -20,10 +20,10 @@ namespace SmnStyleHardline.Wizard
                 EditorPrefs.SetBool(ShowWizardPrefKey, true);
             }
 
-            if (EditorPrefs.GetBool(ShowWizardPrefKey))
-            {
-                EditorSSHWizardWindow.OpenWindow();
-            }
+            // if (EditorPrefs.GetBool(ShowWizardPrefKey))
+            // {
+            //     EditorSSHWizardWindow.OpenWindow();
+            // }
         }
     }
 

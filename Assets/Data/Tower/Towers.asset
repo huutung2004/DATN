@@ -1,0 +1,102 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b17f926cc9029f4999285d792132b42, type: 3}
+  m_Name: Towers
+  m_EditorClassIdentifier: 
+  towerEntries:
+  - name: Tower Water
+    towerType: 0
+    levels:
+    - heal: 100
+      level: 1
+      damage: 5
+      range: 10
+      attackSpeed: 4
+      woodCost: 20
+      stoneCost: 20
+      reWood: 10
+      reStone: 10
+      mesh_Stand: {fileID: -8577324883591173631, guid: e93edaac310f7ad40b5da2e581e3feef,
+        type: 3}
+      mesh_Gun: {fileID: -2545360037395248339, guid: e93edaac310f7ad40b5da2e581e3feef,
+        type: 3}
+    - heal: 150
+      level: 2
+      damage: 7
+      range: 15
+      attackSpeed: 3
+      woodCost: 50
+      stoneCost: 50
+      reWood: 25
+      reStone: 25
+      mesh_Stand: {fileID: 4022360148972711240, guid: 0ec7e11dacd1fd649b71cba4daaece4f,
+        type: 3}
+      mesh_Gun: {fileID: -7777933424606629294, guid: 0ec7e11dacd1fd649b71cba4daaece4f,
+        type: 3}
+  - name: Tower Light
+    towerType: 1
+    levels:
+    - heal: 120
+      level: 1
+      damage: 5
+      range: 15
+      attackSpeed: 4
+      woodCost: 30
+      stoneCost: 30
+      reWood: 15
+      reStone: 15
+      mesh_Stand: {fileID: -7215666463173323856, guid: fa97c2b67d6db44459a1f29f3cc68c10,
+        type: 3}
+      mesh_Gun: {fileID: 979185491588132714, guid: fa97c2b67d6db44459a1f29f3cc68c10,
+        type: 3}
+    - heal: 170
+      level: 2
+      damage: 10
+      range: 20
+      attackSpeed: 2
+      woodCost: 100
+      stoneCost: 100
+      reWood: 40
+      reStone: 40
+      mesh_Stand: {fileID: -6688768760679182839, guid: 28a43aa525e51b54d87d515fcbf08be1,
+        type: 3}
+      mesh_Gun: {fileID: -1711353181505948673, guid: 28a43aa525e51b54d87d515fcbf08be1,
+        type: 3}
+  - name: Tower Fire
+    towerType: 2
+    levels:
+    - heal: 140
+      level: 1
+      damage: 5
+      range: 10
+      attackSpeed: 4
+      woodCost: 20
+      stoneCost: 20
+      reWood: 10
+      reStone: 10
+      mesh_Stand: {fileID: -6536540170911812484, guid: bebbcc94b1ee59f4592a2ebf9700de3d,
+        type: 3}
+      mesh_Gun: {fileID: 4133976897353456169, guid: bebbcc94b1ee59f4592a2ebf9700de3d,
+        type: 3}
+    - heal: 160
+      level: 2
+      damage: 10
+      range: 15
+      attackSpeed: 3
+      woodCost: 100
+      stoneCost: 100
+      reWood: 40
+      reStone: 40
+      mesh_Stand: {fileID: 7390061395319314315, guid: d1e37537aa1a53e47a9e3cc2563175a2,
+        type: 3}
+      mesh_Gun: {fileID: -6601243615386565863, guid: d1e37537aa1a53e47a9e3cc2563175a2,
+        type: 3}

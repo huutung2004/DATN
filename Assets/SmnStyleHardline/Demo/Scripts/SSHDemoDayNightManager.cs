@@ -8,13 +8,12 @@ namespace SmnStyleHardline.Demo
 
     using UnityEngine;
     using SmnStyleHardline.Core;
-
     // ==========================================================================
     // Demo Day / Night Manager
     // ==========================================================================
 
     [ExecuteAlways]
-    class SSHDemoDayNightManager : MonoBehaviour
+    public class SSHDemoDayNightManager : MonoBehaviour
     {
         [SerializeField] bool enableSystem = true;
 
@@ -83,11 +82,13 @@ namespace SmnStyleHardline.Demo
             if (!enableSystem)
                 return;
 
-            if (Application.isPlaying && cyclePlaying)
-            {
-                cycleValue += cycleSpeed * Time.deltaTime;
-                cycleValue = Mathf.Repeat(cycleValue, 1f);
-            }
+            // if (Application.isPlaying)
+            // {
+            //     if (TimeManager.Instance != null)
+            //     {
+            //         cycleValue = TimeManager.Instance.SSHCycleValue;
+            //     }
+            // }
 
             frameCounter++;
 

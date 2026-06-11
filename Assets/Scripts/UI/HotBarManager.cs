@@ -39,7 +39,7 @@ public class HotBarManager : MonoBehaviour
 
         Item item = m_listHotbar[currentIndex].GetItemInSlot();
         // Debug.Log(item, item.m_data.m_obj);
-        if (item != null && item.m_data.m_obj != null)
+        if (item != null && item.m_data.m_obj != null && item.m_data.m_canEquid)
         {
             PlayerEquippedItem.Instance.EquipItem(item.m_data.m_obj);
         }

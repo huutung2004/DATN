@@ -123,7 +123,6 @@ public class Slot : MonoBehaviour, IInventorySlot,
             Debug.Log(
                 $"[{name}] UpdateCount: {m_currentItem.m_data.m_nameOfItem} x{m_currentItem.m_data.m_count}"
             );
-
             m_count.SetText($"{m_currentItem.m_data.m_count}");
         }
     }

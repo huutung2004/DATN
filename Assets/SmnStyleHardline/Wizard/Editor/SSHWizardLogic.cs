@@ -125,7 +125,7 @@ namespace SmnStyleHardline.Wizard
 
             EditorApplication.delayCall += () =>
             {
-                EditorWindow.GetWindow<EditorSSHWizardWindow>()?.Close();
+                // EditorWindow.GetWindow<EditorSSHWizardWindow>()?.Close();
 
                 AssetDatabase.DeleteAsset(wizardPath);
                 AssetDatabase.Refresh();

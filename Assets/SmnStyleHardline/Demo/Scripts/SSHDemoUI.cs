@@ -203,8 +203,8 @@ namespace SmnStyleHardline.Demo
             // _toggleBaseInfo.RegisterCallback<ClickEvent>(
             //     _ => ToggleInfo());
 
-            _toggleBaseFreeCam.RegisterCallback<ClickEvent>(
-                _ => ToggleCameraMode());
+            // _toggleBaseFreeCam.RegisterCallback<ClickEvent>(
+            //     _ => ToggleCameraMode());
 
             _toggleBaseInteractionMode.RegisterCallback<ClickEvent>(
                 _ => ToggleInteractionMode());

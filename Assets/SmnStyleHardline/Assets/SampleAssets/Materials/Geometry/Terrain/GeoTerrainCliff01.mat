@@ -8,7 +8,8 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: GeoTerrainCliff01
-  m_Shader: {fileID: -6465566751694194690, guid: e246ae1e3ee8a2d43b65781e3766f9c3, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: e246ae1e3ee8a2d43b65781e3766f9c3,
+    type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -173,14 +174,13 @@ Material:
     - _Color_Base: {r: 0.9622641, g: 0.631952, b: 0.4584372, a: 1}
     - _Color_Line: {r: 0, g: 0, b: 0, a: 1}
     - _Color_Shadow: {r: 0.49056602, g: 0, b: 0, a: 1}
-    - _Color_Top: {r: 0.7411765, g: 0.78823537, b: 0.45098042, a: 1}
+    - _Color_Top: {r: 0.90188676, g: 0.87636167, b: 0.87636167, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _Line_Color: {r: 0, g: 0, b: 0, a: 1}
     - _Shadow_Color: {r: 0.3019608, g: 0.41568628, b: 0.83137256, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _Top_Color: {r: 0.741789, g: 0.7924528, b: 0.45229617, a: 1}
   m_BuildTextureStacks: []
-  m_AllowLocking: 1
 --- !u!114 &6002636381468154698
 MonoBehaviour:
   m_ObjectHideFlags: 11

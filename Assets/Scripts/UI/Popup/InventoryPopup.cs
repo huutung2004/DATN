@@ -9,6 +9,7 @@ public class InventoryPopup : BasePopup
     {
         base.Show();
     }
+    
     public virtual void Toggle()
     {
         if(isShow) Hide();

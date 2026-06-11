@@ -177,10 +177,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a198b62964510964389224d8e0a9a2e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_outline: {fileID: 0}
+  m_outline: {fileID: 9149694589723730953}
   m_canInteract: 0
   m_nameOfObj: 
-  item: {fileID: 0}
+  _icon: {fileID: 0}
+  item: {fileID: 216856583974136356}
   m_inInventory: 0
   m_particalLoot: {fileID: 0}
 --- !u!114 &216856583974136356

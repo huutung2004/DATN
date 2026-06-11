@@ -31,6 +31,7 @@ public class HoldingPopup : BasePopup
             m_icon.sprite = icon;
             m_default.enabled = true;
         }
+        if(icon == null) m_icon.sprite = null;
         else
         {
             m_default.enabled = true;

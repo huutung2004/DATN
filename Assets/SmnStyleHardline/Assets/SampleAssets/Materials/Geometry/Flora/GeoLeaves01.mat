@@ -8,7 +8,8 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: GeoLeaves01
-  m_Shader: {fileID: -6465566751694194690, guid: ed7f4923424d56f4db0ba098c3fd5a10, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: ed7f4923424d56f4db0ba098c3fd5a10,
+    type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -105,6 +106,8 @@ Material:
     - _DstBlend: 0
     - _DstBlendAlpha: 0
     - _EnvironmentReflections: 1
+    - _Environment_Light_Influence: 1
+    - _Environment_Shadow_Influence: 1
     - _Flame_Step_A: 0.37
     - _Flame_Step_B: 0.46
     - _Flame_Strength_A: 3.54
@@ -139,14 +142,13 @@ Material:
     - _Color_Accent3: {r: 0.6431373, g: 0.79215693, b: 0.45098042, a: 1}
     - _Color_Band01: {r: 0, g: 0.43053007, b: 1, a: 1}
     - _Color_Band02: {r: 0, g: 0.43053007, b: 1, a: 1}
-    - _Color_BandA: {r: 0.6608224, g: 0.7075472, b: 0.36378607, a: 1}
-    - _Color_BandB: {r: 0.6641171, g: 0.7169812, b: 0.32805273, a: 1}
+    - _Color_BandA: {r: 0.626811, g: 0.690566, b: 0.1863225, a: 1}
+    - _Color_BandB: {r: 0.6142043, g: 0.9169811, b: 0.75179005, a: 1}
     - _Color_Base: {r: 0.69375104, g: 0.7882353, b: 0.4509804, a: 1}
     - _Color_Shadow: {r: 0, g: 0, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
-  m_AllowLocking: 1
 --- !u!114 &8050879589567170879
 MonoBehaviour:
   m_ObjectHideFlags: 11

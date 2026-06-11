@@ -50,6 +50,7 @@ MonoBehaviour:
   m_outline: {fileID: 5129489831333132473}
   m_canInteract: 0
   m_nameOfObj: 
+  _icon: {fileID: 0}
   item: {fileID: 8750798516834652555}
   m_inInventory: 0
   m_particalLoot: {fileID: 5801535168332974310}
@@ -73,6 +74,7 @@ MonoBehaviour:
     m_type: 0
     m_inHotbar: 0
     m_canAttack: 1
+    m_canEquid: 0
     m_obj: {fileID: 4406837089883019555}
   m_SO: {fileID: 11400000, guid: a1b7bad03352dad48a3faa321c33c97c, type: 2}
   type: 7
@@ -93,7 +95,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4718164368978645241
 Transform:
   m_ObjectHideFlags: 0
@@ -9925,6 +9927,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _weaponLenght: 0.7
   _weaponDamage: 2
+  layer:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!1 &8631481811908802746
 GameObject:
   m_ObjectHideFlags: 0

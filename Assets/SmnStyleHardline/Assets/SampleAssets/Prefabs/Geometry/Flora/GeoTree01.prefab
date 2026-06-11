@@ -58,6 +58,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8117705894540783860, guid: 1d6ac793011a1c24f83f920dce5930de,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: -6711799346915657197, guid: 1d6ac793011a1c24f83f920dce5930de,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -83,6 +88,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: GeoTree01
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1d6ac793011a1c24f83f920dce5930de,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4340778454167649902, guid: 1d6ac793011a1c24f83f920dce5930de,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -91,6 +106,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 4128534886831050900}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1d6ac793011a1c24f83f920dce5930de,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -5913609940109069999}
     - targetCorrespondingSourceObject: {fileID: 4340778454167649902, guid: 1d6ac793011a1c24f83f920dce5930de,
         type: 3}
       insertIndex: -1
@@ -121,12 +140,37 @@ MonoBehaviour:
   m_outline: {fileID: 739968851132493404}
   m_canInteract: 0
   m_nameOfObj: Tree
+  _icon: {fileID: 0}
   item: {fileID: 0}
   m_inInventory: 0
   m_particalLoot: {fileID: 0}
   m_iconRequired: {fileID: 21300000, guid: 52603aaf49dd0cf47be3b0edae89377e, type: 3}
   m_maxHp: 5
   m_currentHp: 0
+  amount: 4
+--- !u!114 &-5913609940109069999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4727832130738963164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b455d433ed1a0874eb62ee1c365cd58c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_data:
+    m_nameOfItem: 
+    m_spriteRender: {fileID: 0}
+    m_count: 3
+    m_type: 0
+    m_inHotbar: 0
+    m_canAttack: 0
+    m_canEquid: 0
+    m_obj: {fileID: 0}
+  m_SO: {fileID: 11400000, guid: a1b7bad03352dad48a3faa321c33c97c, type: 2}
+  type: 0
 --- !u!1 &8169600739237560803 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4340778454167649902, guid: 1d6ac793011a1c24f83f920dce5930de,

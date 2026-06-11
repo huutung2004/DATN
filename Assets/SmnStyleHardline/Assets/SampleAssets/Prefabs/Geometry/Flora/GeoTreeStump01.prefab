@@ -63,6 +63,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 2cd477261c32090479becbd56b84c6c4, type: 2}
+    - target: {fileID: -890803678327532591, guid: dbc05dc84fb990a4592f0c4918c57b42,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 330662520459529645, guid: dbc05dc84fb990a4592f0c4918c57b42,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -72,6 +77,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GeoTreeStump01
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: dbc05dc84fb990a4592f0c4918c57b42,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6365765180869282267, guid: dbc05dc84fb990a4592f0c4918c57b42,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -111,6 +126,7 @@ MonoBehaviour:
   m_outline: {fileID: 3682089291874694092}
   m_canInteract: 0
   m_nameOfObj: Wood
+  _icon: {fileID: 0}
   item: {fileID: 0}
   m_inInventory: 0
   m_particalLoot: {fileID: 0}

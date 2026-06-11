@@ -50,6 +50,7 @@ MonoBehaviour:
   m_outline: {fileID: 4279580388157935177}
   m_canInteract: 0
   m_nameOfObj: 
+  _icon: {fileID: 0}
   item: {fileID: 6791686578990052013}
   m_inInventory: 0
   m_particalLoot: {fileID: 4621070904656087626}
@@ -73,6 +74,7 @@ MonoBehaviour:
     m_type: 0
     m_inHotbar: 0
     m_canAttack: 1
+    m_canEquid: 0
     m_obj: {fileID: 466151798561507228}
   m_SO: {fileID: 11400000, guid: a1b7bad03352dad48a3faa321c33c97c, type: 2}
   type: 9
@@ -122,6 +124,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _weaponLenght: 0.5
   _weaponDamage: 3
+  layer:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!1 &4379267213842153225
 GameObject:
   m_ObjectHideFlags: 0
