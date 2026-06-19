@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8300436146553694604}
   - component: {fileID: 6356367698114886627}
   - component: {fileID: 592385734013661805}
-  - component: {fileID: 6299951787182615912}
+  - component: {fileID: 1661464500219998711}
   m_Layer: 12
   m_Name: GeoFence01_LOD0
   m_TagString: Untagged
@@ -84,28 +84,22 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &6299951787182615912
-MeshCollider:
+--- !u!208 &1661464500219998711
+NavMeshObstacle:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2137872272637843675}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -5503625532242319054, guid: 7c037905a9530bf49b35253338f998cc, type: 3}
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.8, y: 0.34500003, z: 0.05}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 0
+  m_Center: {x: 0.507, y: 0.32200003, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &2955411966390915367
 GameObject:
   m_ObjectHideFlags: 0
@@ -118,6 +112,7 @@ GameObject:
   - component: {fileID: 798865747585232390}
   - component: {fileID: 682532613408434241}
   - component: {fileID: 2053956561408861723}
+  - component: {fileID: 9115320757548656290}
   m_Layer: 12
   m_Name: GeoFence01
   m_TagString: Untagged
@@ -199,11 +194,34 @@ MonoBehaviour:
   m_outline: {fileID: 682532613408434241}
   m_canInteract: 0
   m_nameOfObj: Fence
-  _icon: {fileID: 0}
+  _icon: {fileID: 21300000, guid: 0dbaf548059abd54fb9a23b8e48cd028, type: 3}
   item: {fileID: 0}
   m_inInventory: 0
   m_particalLoot: {fileID: 0}
   woodCost: 5
+  hp: 50
+  sprite: {fileID: 21300000, guid: 0dbaf548059abd54fb9a23b8e48cd028, type: 3}
+--- !u!65 &9115320757548656290
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2955411966390915367}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.197422, y: 0.6844344, z: 0.19050416}
+  m_Center: {x: 0.5373323, y: 0.32386994, z: -0.015069843}
 --- !u!1 &6157036485001189142
 GameObject:
   m_ObjectHideFlags: 0

@@ -15,7 +15,7 @@ public class EnemyAttackState : IState
     public void EnterState()
     {
         brain.Agent.ResetPath();
-        attackTimer = 0;
+        attackTimer = AttackCooldown;
     }
 
     public void Update()
@@ -29,7 +29,6 @@ public class EnemyAttackState : IState
         {
             attackTimer = 0;
             brain.Animator.SetTrigger("attack");
-            Debug.Log("Attack");
         }
     }
 

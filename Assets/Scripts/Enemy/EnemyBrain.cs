@@ -19,11 +19,25 @@ public class EnemyBrain : MonoBehaviour
     [Header("Patrol")]
     public float PatrolRadius = 10f;
 
-    [HideInInspector]
-    public Transform Target;
+    [Header("Fence")]
+    public LayerMask FenceLayer;
+    public float FenceSearchRadius = 3f;
+    [Header("Jump")]
+    public float JumpHeight = 2.5f;
+    public float JumpDistance = 3f;
 
-    [HideInInspector]
-    public Vector3 SpawnPosition;
+    [Header("Enemy Behaviour Type")]
+    [Tooltip("Enemy này có thể đập phá hàng rào không?")]
+    public bool CanAttackFence = true;
+
+    [Tooltip("Enemy này có thể nhảy qua hàng rào không?")]
+    public bool CanJumpFence = false;
+    public bool HasOpenPath { get; set; }
+
+    [HideInInspector] public Fence CurrentFence;
+    [HideInInspector] public Transform Target;
+    [HideInInspector] public Transform TowerTarget;
+    [HideInInspector] public Vector3 SpawnPosition;
 
     private void Awake()
     {
@@ -32,11 +46,14 @@ public class EnemyBrain : MonoBehaviour
 
         SpawnPosition = transform.position;
         CurrentHp = MaxHp;
+
         if (Target == null)
         {
-            Target = GameObject.FindGameObjectWithTag("Player").transform;
+            var player = GameObject.FindGameObjectWithTag("Player");
+            if (player != null) Target = player.transform;
         }
     }
+
     private void Update()
     {
         if (Animator != null)
@@ -46,50 +63,37 @@ public class EnemyBrain : MonoBehaviour
         }
     }
 
-    public void OnFootstep()
-    {
+    public void OnFootstep() { }
 
-    }
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(
-            Application.isPlaying
-                ? SpawnPosition
-                : transform.position,
-            PatrolRadius);
-
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(
-            transform.position,
-            DetectRange);
-
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(
-            transform.position,
-            AttackRange);
-
-        Gizmos.color = Color.gray;
-        Gizmos.DrawWireSphere(
-            transform.position,
-            LoseTargetRange);
-    }
     public void StartDealDamage()
     {
-
-        var dameDealer = gameObject.GetComponentInChildren<DameDealer>();
-        if (dameDealer)
-        {
-            dameDealer.StartDealDamage();
-        }
+        var dealer = GetComponentInChildren<DameDealer>();
+        if (dealer) dealer.StartDealDamage();
     }
+
     public void EndDealDamage()
     {
+        var dealer = GetComponentInChildren<DameDealer>();
+        if (dealer) dealer.EndDealDamage();
+    }
 
-        var dameDealer = gameObject.GetComponentInChildren<DameDealer>();
-        if (dameDealer)
-        {
-            dameDealer.EndDealDamage();
-        }
+    private void OnDrawGizmosSelected()
+    {
+        Vector3 origin = Application.isPlaying ? SpawnPosition : transform.position;
+
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(origin, PatrolRadius);
+
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, DetectRange);
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, AttackRange);
+
+        Gizmos.color = Color.gray;
+        Gizmos.DrawWireSphere(transform.position, LoseTargetRange);
+
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireSphere(transform.position, FenceSearchRadius);
     }
 }

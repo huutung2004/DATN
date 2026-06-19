@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -26,7 +27,10 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] private TMP_Text _stone;
 
     private List<Slot> m_allSlots = new List<Slot>();
-
+    public bool HasItem(ItemType type, int amount = 1)
+    {
+        return GetItemCount(type) >= amount;
+    }
     private void Awake()
     {
         Instance = this;
@@ -36,20 +40,15 @@ public class InventoryManager : MonoBehaviour
         m_allSlots.AddRange(m_slotsInventory);
     }
 
-    private void Start()
+    private IEnumerator Start()
     {
         foreach (var slot in m_allSlots)
         {
             slot.Clear();
         }
-
-        // if (m_items.Count > 0)
-        // {
-        //     foreach (Item item in m_items)
-        //     {
-        //         AddItem(item);
-        //     }
-        // }
+        yield return new WaitForSeconds(0.3f);
+        AddItemByType(ItemType.wood, 100);
+        AddItemByType(ItemType.stone, 100);
         UpdateUI();
     }
     //Temp for header
@@ -70,7 +69,7 @@ public class InventoryManager : MonoBehaviour
                 slot.m_currentItem.m_data.m_count += amount;
                 if (amount < 0)
                 {
-                    ReducePop.Instance.FillData($"- {amount} {slot.m_currentItem.m_data.m_nameOfItem} ", slot.m_currentItem.m_data.m_spriteRender);
+                    ReducePop.Instance.FillData($" {amount} {slot.m_currentItem.m_data.m_nameOfItem} ", slot.m_currentItem.m_data.m_spriteRender);
                 }
                 slot.UpdateCount();
                 UpdateUI();
@@ -164,5 +163,35 @@ public class InventoryManager : MonoBehaviour
             }
         }
         return count;
+    }
+    public bool ConsumeItem(ItemType type, int amount = 1)
+    {
+        if (!HasItem(type, amount)) return false;
+
+        int remaining = amount;
+
+        foreach (var slot in m_allSlots)
+        {
+            if (remaining <= 0) break;
+
+            if (slot.m_currentItem == null) continue;
+            if (slot.m_currentItem.m_data.m_type != type) continue;
+
+            int inSlot = slot.m_currentItem.m_data.m_count;
+            if (inSlot <= remaining)
+            {
+                remaining -= inSlot;
+                slot.Clear();
+            }
+            else
+            {
+                slot.m_currentItem.m_data.m_count -= remaining;
+                remaining = 0;
+                slot.UpdateCount();
+            }
+        }
+
+        UpdateUI();
+        return true;
     }
 }

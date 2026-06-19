@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class TowerBase : BaseObj
+public class TowerBase : BaseObj, ITakeDamage
 {
     [Header("Tower Config")]
     public TowerType towerType;
@@ -19,7 +19,9 @@ public class TowerBase : BaseObj
     private int currentLevel;
 
     private float attackTimer;
+    public float currentHp;
     private Enemy currentTarget;
+    public Sprite sprite;
 
     private readonly List<Enemy> enemiesInRange = new();
 
@@ -143,12 +145,7 @@ public class TowerBase : BaseObj
 
     private void Shoot(Enemy target)
     {
-        Debug.Log(
-            $"Tower {towerType} attacks {target.name} | Damage: {CurrentData.damage}");
-
-        // TODO:
-        // Spawn projectile từ Object Pool
-        // projectile.Init(target, CurrentData.damage);
+        target.TakeDamage(CurrentData.damage);
     }
 
     public void AddEnemy(Enemy enemy)
@@ -179,6 +176,7 @@ public class TowerBase : BaseObj
     }
     private void UpdateData()
     {
+        currentHp = CurrentData.heal;
         _meshGun.mesh = CurrentData.mesh_Gun;
         _meshStand.mesh = CurrentData.mesh_Stand;
     }
@@ -191,8 +189,23 @@ public class TowerBase : BaseObj
     }
     public override void Holding()
     {
-        base.Holding();
+        if (m_outline)
+            m_outline.enabled = true;
+        m_canInteract = true;
+        if (HealBarPopup.Instance)
+        {
+            HealBarPopup.Instance.FillData(m_nameOfObj, sprite, currentHp / CurrentData.heal);
+            HealBarPopup.Instance.Show();
+        }
 
+    }
+    public override void UnHolding()
+    {
+        base.UnHolding();
+        if (HealBarPopup.Instance)
+        {
+            HealBarPopup.Instance.Hide();
+        }
     }
     public virtual void ReturnPool()
     {
@@ -200,5 +213,17 @@ public class TowerBase : BaseObj
         InventoryManager.Instance.AddItemByType(ItemType.stone, CurrentData.reStone);
 
         Destroy(gameObject);
+    }
+
+    public void TakeDamage(float damge)
+    {
+        CurrentData.heal -= damge;
+        HealBarPopup.Instance.GetImage().fillAmount = currentHp / CurrentData.heal;
+
+        if (CurrentData.heal <= 0)
+        {
+            Destroy(gameObject);
+            ParticalManager.Instance.PlaySomke(gameObject.transform.position + Vector3.up * 0.6f);
+        }
     }
 }

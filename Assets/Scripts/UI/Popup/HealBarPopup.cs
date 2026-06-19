@@ -11,6 +11,7 @@ public class HealBarPopup : BasePopup
     [SerializeField] private Vector2 m_offset = new Vector2(-40, -40);
     [SerializeField] private RectTransform m_mainRect;
     [SerializeField] private Image m_imageFill;
+    public Image GetImage() => m_imageFill;
 
     public static HealBarPopup Instance;
     protected override void Awake()

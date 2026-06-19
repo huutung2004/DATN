@@ -6,6 +6,7 @@ public class PlayerInteraction : MonoBehaviour
 {
     [SerializeField] public float m_interactDistance = 5f;
     [SerializeField] private IInteractable m_currentInteract;
+    [SerializeField] private LayerMask m_interactableMask;
     private Camera _camera;
     private void Start()
     {
@@ -31,7 +32,7 @@ public class PlayerInteraction : MonoBehaviour
 
         Debug.DrawRay(ray.origin, ray.direction * m_interactDistance, Color.red);
 
-        if (Physics.Raycast(ray, out hit, m_interactDistance))
+        if (Physics.Raycast(ray, out hit, m_interactDistance, m_interactableMask))
         {
             IInteractable obj = hit.collider.GetComponentInParent<IInteractable>();
 

@@ -1,3 +1,4 @@
+using System.Collections;
 using PrimeTween;
 using UnityEngine;
 using UnityEngine.UI;
@@ -20,6 +21,7 @@ public class BasePopup : MonoBehaviour
         Tween.StopAll(main.transform);
         main.alpha = 0f;
         isShow = true;
+        main.gameObject.SetActive(true);
         gameObject.SetActive(true);
         Tween.Alpha(main, 0, 1f, .5f);
     }

@@ -11,7 +11,11 @@ public class TowerBuildPopup : BasePopup
     [SerializeField] private TowerBase _towerPrefab3;
 
     private TowerBase _towerSelected;
-
+    public override void Show()
+    {
+        base.Show();
+        
+    }
     private void Start()
     {
         TryUnSelectUI();

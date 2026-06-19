@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1568690945384639544}
   - component: {fileID: 4467907126455923095}
   - component: {fileID: 3805428966278748150}
-  m_Layer: 11
+  m_Layer: 14
   m_Name: Ranger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -127,6 +127,8 @@ MonoBehaviour:
   towerData: {fileID: 11400000, guid: 7525dbcb569d3f2428060940995462d1, type: 2}
   rangeCollider: {fileID: 4467907126455923095}
   beam: {fileID: 3086000402005355213}
+  currentHp: 0
+  sprite: {fileID: 21300000, guid: b0c584075b66b8740911c7e2091ceb02, type: 3}
 --- !u!1 &3942089588455378903
 GameObject:
   m_ObjectHideFlags: 0
@@ -139,6 +141,7 @@ GameObject:
   - component: {fileID: 1478143655017649698}
   - component: {fileID: 4833965986036747992}
   - component: {fileID: 7014555639099579711}
+  - component: {fileID: 5778736636633146494}
   m_Layer: 11
   m_Name: Tower_1_Stand
   m_TagString: Untagged
@@ -232,6 +235,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3.889214, y: 6.8771763, z: 3.8892138}
   m_Center: {x: 0.000000059604645, y: 3.4385881, z: -0.00000011920929}
+--- !u!208 &5778736636633146494
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3942089588455378903}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.9, y: 3.4390001, z: 0.835}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 3.4390001, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &6777905839804100917
 GameObject:
   m_ObjectHideFlags: 0

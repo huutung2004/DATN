@@ -27,7 +27,9 @@ public enum ItemType
     Herb,
     magic,
     sword,
-    axe
+    axe,
+    woodInit,
+    ItemInit
 }
 public interface IAction
 {

@@ -26,6 +26,7 @@ public class HotBarManager : MonoBehaviour
             m_listHotbar[currentIndex].Deselect();
             PlayerEquippedItem.Instance.UnEquipItem();
             currentIndex = -1;
+             FlowerPlantingHandler.Instance?.OnItemDeselected();
             return;
         }
 
@@ -47,5 +48,6 @@ public class HotBarManager : MonoBehaviour
         {
             PlayerEquippedItem.Instance.UnEquipItem();
         }
+        FlowerPlantingHandler.Instance?.OnItemSelected(item);
     }
 }

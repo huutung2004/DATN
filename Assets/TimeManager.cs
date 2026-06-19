@@ -1,12 +1,13 @@
 
 using System;
+using PrimeTween;
 using SmnStyleHardline.Demo;
 using TMPro;
 using UnityEngine;
 
 public class TimeManager : MonoBehaviour
 {
-
+    private bool hasWon;
     public static TimeManager Instance;
 
     [Header("Time Settings")]
@@ -63,6 +64,15 @@ $"Day {TimeManager.Instance.Day}\n{TimeManager.Instance.GetTimeString()}";
             currentDay++;
 
             OnDayChanged?.Invoke(currentDay);
+
+            if (!hasWon && currentDay >= 15)
+            {
+                hasWon = true;
+
+                WinerPopup.Instance.gameObject.SetActive(true);
+                WinerPopup.Instance.Show();
+                Tween.Delay(1f,()=> Time.timeScale = 0f);
+            }
         }
     }
 

@@ -193,6 +193,7 @@ MonoBehaviour:
     m_type: 3
     m_inHotbar: 0
     m_canAttack: 0
+    m_canEquid: 0
     m_obj: {fileID: 5170194256693196462}
   m_SO: {fileID: 11400000, guid: a1b7bad03352dad48a3faa321c33c97c, type: 2}
   type: 3

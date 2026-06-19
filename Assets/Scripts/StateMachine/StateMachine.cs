@@ -6,6 +6,7 @@ public class StateMachine
 {
     StateNode currentState;
     Dictionary<Type, StateNode> nodes = new();
+    public string CurrentStateName => currentState?.GetType().Name ?? "None";
     HashSet<ITransition> anyTransitions = new();
     public void Update()
     {
@@ -49,7 +50,7 @@ public class StateMachine
     }
     public void AddTransition(IState From, IState To, IPredicate condition)
     {
-        GetOrAddNode(From).AddTransition(GetOrAddNode(To).State,condition);
+        GetOrAddNode(From).AddTransition(GetOrAddNode(To).State, condition);
     }
     public void AddAnyTransition(IState To, IPredicate condition)
     {
@@ -61,7 +62,7 @@ public class StateMachine
         if (node == null)
         {
             node = new StateNode(state);
-            nodes.Add(state.GetType(),node);
+            nodes.Add(state.GetType(), node);
         }
         return node;
     }

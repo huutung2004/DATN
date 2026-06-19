@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -46,8 +47,13 @@ public class TowerOverviewPop : BasePopup
     {
         if (_currentTowerSelected)
         {
-            _currentTowerSelected.Upgrade();
-            FillData(_currentTowerSelected);
+            if (InventoryManager.Instance.GetItemCount(ItemType.wood) >= _currentTowerSelected.CurrentData.woodCost && InventoryManager.Instance.GetItemCount(ItemType.stone) >= _currentTowerSelected.CurrentData.stoneCost)
+            {
+                InventoryManager.Instance.AddItemByType(ItemType.wood, -_currentTowerSelected.CurrentData.woodCost);
+                InventoryManager.Instance.AddItemByType(ItemType.stone, -_currentTowerSelected.CurrentData.stoneCost);
+                _currentTowerSelected.Upgrade();
+                FillData(_currentTowerSelected);
+            }
         }
     }
     private void TryDestroy()

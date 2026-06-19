@@ -18,9 +18,9 @@ MonoBehaviour:
     levels:
     - heal: 100
       level: 1
-      damage: 5
+      damage: 10
       range: 10
-      attackSpeed: 4
+      attackSpeed: 1
       woodCost: 20
       stoneCost: 20
       reWood: 10
@@ -31,9 +31,9 @@ MonoBehaviour:
         type: 3}
     - heal: 150
       level: 2
-      damage: 7
+      damage: 20
       range: 15
-      attackSpeed: 3
+      attackSpeed: 1
       woodCost: 50
       stoneCost: 50
       reWood: 25
@@ -47,9 +47,9 @@ MonoBehaviour:
     levels:
     - heal: 120
       level: 1
-      damage: 5
+      damage: 10
       range: 15
-      attackSpeed: 4
+      attackSpeed: 1
       woodCost: 30
       stoneCost: 30
       reWood: 15
@@ -60,9 +60,9 @@ MonoBehaviour:
         type: 3}
     - heal: 170
       level: 2
-      damage: 10
+      damage: 20
       range: 20
-      attackSpeed: 2
+      attackSpeed: 1
       woodCost: 100
       stoneCost: 100
       reWood: 40
@@ -74,11 +74,11 @@ MonoBehaviour:
   - name: Tower Fire
     towerType: 2
     levels:
-    - heal: 140
+    - heal: 0
       level: 1
-      damage: 5
+      damage: 10
       range: 10
-      attackSpeed: 4
+      attackSpeed: 1
       woodCost: 20
       stoneCost: 20
       reWood: 10
@@ -89,9 +89,9 @@ MonoBehaviour:
         type: 3}
     - heal: 160
       level: 2
-      damage: 10
+      damage: 20
       range: 15
-      attackSpeed: 3
+      attackSpeed: 1
       woodCost: 100
       stoneCost: 100
       reWood: 40

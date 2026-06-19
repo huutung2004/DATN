@@ -206,29 +206,29 @@ namespace SmnStyleHardline.Demo
             // _toggleBaseFreeCam.RegisterCallback<ClickEvent>(
             //     _ => ToggleCameraMode());
 
-            _toggleBaseInteractionMode.RegisterCallback<ClickEvent>(
-                _ => ToggleInteractionMode());
+            // _toggleBaseInteractionMode.RegisterCallback<ClickEvent>(
+            //     _ => ToggleInteractionMode());
 
-            _toggleBaseDayNightPlay.RegisterCallback<ClickEvent>(
-                _ => ToggleDayNightPlay());
+            // _toggleBaseDayNightPlay.RegisterCallback<ClickEvent>(
+            //     _ => ToggleDayNightPlay());
 
-            _timeSlider.RegisterValueChangedCallback(evt =>
-            {
-                if (_ignoreSliderCallback)
-                    return;
+            // _timeSlider.RegisterValueChangedCallback(evt =>
+            // {
+            //     if (_ignoreSliderCallback)
+            //         return;
 
-                OnTimeSliderChanged(evt.newValue);
-            });
+            //     OnTimeSliderChanged(evt.newValue);
+            // });
 
-            _cinArrowLeft.RegisterCallback<ClickEvent>(
-                _ => StepCinematic(-1));
-            _cinArrowRight.RegisterCallback<ClickEvent>(
-                _ => StepCinematic(1));
+            // _cinArrowLeft.RegisterCallback<ClickEvent>(
+            //     _ => StepCinematic(-1));
+            // _cinArrowRight.RegisterCallback<ClickEvent>(
+            //     _ => StepCinematic(1));
 
-            _btnStyleLeft.RegisterCallback<ClickEvent>(
-                _ => ChangeStyle(false));
-            _btnStyleRight.RegisterCallback<ClickEvent>(
-                _ => ChangeStyle(true));
+            // _btnStyleLeft.RegisterCallback<ClickEvent>(
+            //     _ => ChangeStyle(false));
+            // _btnStyleRight.RegisterCallback<ClickEvent>(
+            //     _ => ChangeStyle(true));
         }
 
 
